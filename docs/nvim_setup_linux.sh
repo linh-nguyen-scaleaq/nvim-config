@@ -91,7 +91,8 @@ fi
 #######################################################################
 #                Install node and js-based language server            #
 #######################################################################
-if [ ${NODEJS_INSTALL} ]; then
+if [[ "${NODEJS_INSTALL}" = true ]]; then
+    echo "NOW install nodejs"
 NODE_DIR=$HOME/tools/nodejs
 NODE_SRC_NAME=$HOME/packages/nodejs.tar.gz
 # when download speed is slow, we can also use its mirror site: https://mirrors.ustc.edu.cn/node/v15.0.0/
