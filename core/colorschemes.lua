@@ -37,6 +37,10 @@ M.onedark = function()
   vim.cmd([[colorscheme onedark]])
 end
 
+M.onedark_dark = function()
+  vim.cmd([[colorscheme onedark_dark]])
+end
+
 M.edge = function()
   vim.g.edge_enable_italic = 1
   vim.g.edge_better_performance = 1
@@ -150,4 +154,5 @@ M.rand_colorscheme = function()
 end
 
 -- Load a random colorscheme
-M.rand_colorscheme()
+--M.rand_colorscheme()
+M.onedark_dark()
