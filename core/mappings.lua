@@ -37,6 +37,7 @@ keymap.set("n", "]q", "<cmd>cnext<cr>zv", { silent = true, desc = "next qf item"
 keymap.set("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item" })
 keymap.set("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item" })
 
+vim.keymap.set("n", "<space>e", "<cmd>NvimTreeFocus<cr>", { silent = true, desc = "Focus on NvimTree" })
 -- Close location list or quickfix list if they are present, see https://superuser.com/q/355325/736190
 keymap.set("n", [[\x]], "<cmd>windo lclose <bar> cclose <cr>", {
   silent = true,
@@ -243,3 +244,17 @@ keymap.set("n", "<leader>cb", function()
     cnt = cnt + 1
   end))
 end)
+
+-- Telescope
+-- Enable telescope fzf native, if installed
+--pcall(require('telescope').load_extension, 'fzf')
+
+-- See `:help telescope.builtin`
+keymap.set('n', '<leader>?', "<cmd>Telescope oldfiles<cr>", { desc = '[?] Find recently opened files' })
+keymap.set('n', '<leader><space>', "<cmd>Telescope buffers<cr>", { desc = '[ ] Find existing buffers' })
+keymap.set('n', '<leader>sf', "<cmd>Telescope find_files<cr>", { desc = '[S]earch [F]iles' })
+keymap.set('n', '<leader>sh', "<cmd>Telescope help_tags<cr>", { desc = '[S]earch [H]elp' })
+keymap.set('n', '<leader>sw', "<cmd>Telescope grep_string<cr>", { desc = '[S]earch current [W]ord' })
+keymap.set('n', '<leader>sg', "<cmd>Telescope live_grep<cr>", { desc = '[S]earch by [G]rep' })
+keymap.set('n', '<leader>sd', "<cmd>Telescope diagnostics<cr>", { desc = '[S]earch [D]iagnostics' })
+keymap.set('n', '<leader>ss', "<cmd>Telescope lsp_document_symbols<cr>", { desc = '[S]earch [S]ymbols' })

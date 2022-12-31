@@ -122,6 +122,9 @@ packer.startup {
     -- search emoji and other symbols
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
 
+    -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+
     -- A list of colorscheme plugin you may want to try. Find what suits you.
     use { "navarasu/onedark.nvim", opt = true }
     use { "sainnhe/edge", opt = true }
