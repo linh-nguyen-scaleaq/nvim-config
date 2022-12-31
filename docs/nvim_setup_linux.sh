@@ -7,18 +7,20 @@ PYTHON_INSTALLED=true
 
 # If Python has been installed, then we need to know whether Python is provided
 # by the system, or you have already installed Python under your HOME.
-SYSTEM_PYTHON=false
+SYSTEM_PYTHON=true
 
 # If SYSTEM_PYTHON is false, we need to decide whether to install
 # Anaconda (INSTALL_ANACONDA=true) or Miniconda (INSTALL_ANACONDA=false)
 INSTALL_ANACONDA=false
 
+NODEJS_INSTALL=false
+
 # Whether to add the path of the installed executables to system PATH
 ADD_TO_SYSTEM_PATH=true
 
 # select which shell we are using
-USE_ZSH_SHELL=true
-USE_BASH_SHELL=false
+USE_ZSH_SHELL=false
+USE_BASH_SHELL=true
 
 if [[ ! -d "$HOME/packages/" ]]; then
     mkdir -p "$HOME/packages/"
@@ -89,6 +91,7 @@ fi
 #######################################################################
 #                Install node and js-based language server            #
 #######################################################################
+if [ ${NODEJS_INSTALL} ]; then
 NODE_DIR=$HOME/tools/nodejs
 NODE_SRC_NAME=$HOME/packages/nodejs.tar.gz
 # when download speed is slow, we can also use its mirror site: https://mirrors.ustc.edu.cn/node/v15.0.0/
@@ -120,7 +123,7 @@ fi
 
 # Install bash-language-server
 "$NODE_DIR/bin/npm" install -g bash-language-server
-
+fi # nodejs install
 #######################################################################
 #                         lua-language-server                         #
 #######################################################################
@@ -250,7 +253,7 @@ if [[ -d "$NVIM_CONFIG_DIR" ]]; then
     mv "$NVIM_CONFIG_DIR" "$NVIM_CONFIG_DIR.backup"
 fi
 
-git clone --depth=1 https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR"
+git clone --depth=1 git@github.com:linh-nguyen-scaleaq/nvim-config.git "$NVIM_CONFIG_DIR"
 
 echo "Installing packer.nvim"
 if [[ ! -d ~/.local/share/nvim/site/pack/packer/opt/packer.nvim ]]; then
